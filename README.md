@@ -5,10 +5,6 @@
  ->usuario: 1234
  ->password: 0000
  
- (usuario Normal)
- ->usuario: 5678
- ->password: 1234
- 
  
  
  
