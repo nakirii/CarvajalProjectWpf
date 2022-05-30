@@ -121,7 +121,7 @@ namespace Interfaz.Views
                     MessageBox.Show("La Fecha de llegada no puede ser mayor a la fecha de Salida");
                     return false;
                 }
-                else if(dtFechaLlegada.SelectedDate == dtFechaSalida.SelectedDate && tmhorallegadav > tmHoraSalidav)
+                else if(dtFechaLlegada.SelectedDate == dtFechaSalida.SelectedDate && tmhorallegadav >= tmHoraSalidav)
                 {
                     MessageBox.Show("La Hora de SALIDA no puede ser mayor a la Hora de LLEGADA \nYa que el vuelo se completara el Mismo dia");
                     return false;

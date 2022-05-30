@@ -10,7 +10,8 @@ namespace CapaDatos
 {
     public class CD_Conexion
     {
-        private SqlConnection Conexion = new SqlConnection("Data Source=DESKTOP-D306E52;Initial Catalog=Aeropuerto;Persist Security Info=True;User ID=sa;Password=0000");
+        private SqlConnection Conexion = new SqlConnection("Data Source= ;Initial Catalog=Aeropuerto;Persist Security Info=True;User ID=sa;Password=0000");
+        
         public SqlConnection OpenConnection()
         {
             if (Conexion.State == ConnectionState.Closed)

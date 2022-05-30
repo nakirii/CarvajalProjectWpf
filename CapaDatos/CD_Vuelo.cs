@@ -36,7 +36,6 @@ namespace CapaDatos
                 DataRow row = dt.Rows[0];
 
                 e_Vuelo.NoVuelo = Convert.ToString(row[0]);
-
                 e_Vuelo.FechaSalida = Convert.ToDateTime(row[1]);
                 e_Vuelo.FechaLlegada = Convert.ToDateTime(row[2]);
                 var HoraLlegada = row[3].ToString();
