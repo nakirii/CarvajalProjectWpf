@@ -3,10 +3,10 @@
  
  (usuario admin)
  ->usuario: 1234
- ->password: 000
+ ->password: 0000
  
  (usuario Normal)
- ->usuario: 56789
+ ->usuario: 5678
  ->password: 1234
  
  
