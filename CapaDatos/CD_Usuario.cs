@@ -89,7 +89,6 @@ namespace CapaDatos
                 E_Usuario.Telefono = Convert.ToString(row[5]);
                 E_Usuario.Correo = Convert.ToString(row[6]);
                 E_Usuario.TipoUsuario = Convert.ToInt32(row[8]);
-
                 return E_Usuario;
             }
             catch (Exception ex)
@@ -110,7 +109,6 @@ namespace CapaDatos
                 da.SelectCommand.Parameters.Add("@Usuario", SqlDbType.VarChar).Value = usuario;
                 da.SelectCommand.Parameters.Add("@Password", SqlDbType.VarChar).Value = contrasena;
                 da.SelectCommand.Parameters.Add("@Patron", SqlDbType.VarChar).Value = patron;
-
                 DataSet ds = new DataSet();
                 ds.Clear();
                 da.Fill(ds);
@@ -130,6 +128,35 @@ namespace CapaDatos
                 return null;
             }
         }
+
+        public E_Usuario validarUsuarioExiste(string usuario)
+        {
+            try
+            {
+                comando.Connection = CD_Conexion.OpenConnection();
+                SqlDataAdapter da = new SqlDataAdapter("ConsultarUsuarios", comando.Connection);
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.Add("@NoDoc", SqlDbType.VarChar).Value = usuario;
+                DataSet ds = new DataSet();
+                ds.Clear();
+                da.Fill(ds);
+                DataTable dt = ds.Tables[0];
+                E_Usuario.NoDoc = null;
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow row = dt.Rows[0];
+                    E_Usuario.NoDoc = Convert.ToString(row[0]);
+                    
+                }
+                return E_Usuario;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hubo Problemas al Cargar los datos");
+                return null;
+            }
+        }
+
 
         public E_Usuario Vercontrasena(string id)
         {

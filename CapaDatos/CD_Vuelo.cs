@@ -132,5 +132,34 @@ namespace CapaDatos
                 return null;
             }
         }
+
+
+        public E_Vuelo validarVuerloExiste(string NoVuelo)
+        {
+            try
+            {
+                comando.Connection = CD_Conexion.OpenConnection();
+                SqlDataAdapter da = new SqlDataAdapter("ConsultarVuelo", comando.Connection);
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.Add("@NoVuelo", SqlDbType.VarChar).Value = NoVuelo;
+                DataSet ds = new DataSet();
+                ds.Clear();
+                da.Fill(ds);
+                DataTable dt = ds.Tables[0];
+                e_Vuelo.NoVuelo = null;
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow row = dt.Rows[0];
+                    e_Vuelo.NoVuelo = Convert.ToString(row[0]);
+
+                }
+                return e_Vuelo;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hubo Problemas al Cargar los datos");
+                return null;
+            }
+        }
     }
 }

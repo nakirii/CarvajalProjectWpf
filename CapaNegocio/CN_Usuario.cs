@@ -36,6 +36,11 @@ namespace CapaNegocio
             return CD_Usuario.Login(usuario,contrasena);
         }
 
+        public E_Usuario UserExiste(string usuario)
+        {
+            return CD_Usuario.validarUsuarioExiste(usuario);
+        }
+
         public E_Usuario ConsultarContraseba(string id)
         {
             return CD_Usuario.Vercontrasena(id);

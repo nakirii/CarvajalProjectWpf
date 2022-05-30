@@ -16,9 +16,7 @@ namespace Interfaz.Views
 
         private void Acceder(object sender, RoutedEventArgs e)
         {
-            //MainWindow mainWindow = new MainWindow();
-            //mainWindow.Show();
-            //this.Close();
+            
             string pass = tbcontrasena.Password;
             if(pass.Length!=0 && tbusuario.Text.Length != 0)
             {

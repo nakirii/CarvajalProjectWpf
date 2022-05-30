@@ -34,5 +34,10 @@ namespace CapaNegocio
         {
             return CD_Vuelo.ConsultarVuelo(id);
         }
+
+        public E_Vuelo VueloExiste(string vuelo)
+        {
+            return CD_Vuelo.validarVuerloExiste(vuelo);
+        }
     }
 }

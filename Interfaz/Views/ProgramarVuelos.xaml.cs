@@ -71,7 +71,8 @@ namespace Interfaz.Views
 
         private void RegistrarVuelo(object sender, RoutedEventArgs e)
         {
-            regitrar();
+            string vuelo = tbNoVuelo.Text;
+            regitrar(vuelo);
         }
 
         void asignado()
@@ -139,14 +140,24 @@ namespace Interfaz.Views
             }
         }
 
-        public void regitrar()
+        public void regitrar(string vuelo)
         {
-            if (validarcampos())
+
+            var datos = cN_Vuelos.VueloExiste(vuelo);
+            if (datos.NoVuelo == null)
             {
-                asignado();
-                cN_Vuelos.RistrarVuelo(e_Vuelo);
-                Content = new Vuelos();
+                if (validarcampos())
+                {
+                    asignado();
+                    cN_Vuelos.RistrarVuelo(e_Vuelo);
+                    Content = new Vuelos();
+                }
             }
+            else
+            {
+                MessageBox.Show("Este Vuelo ya esta registrado.");
+            }
+
         }
 
         

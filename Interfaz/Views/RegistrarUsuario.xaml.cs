@@ -30,7 +30,8 @@ namespace Interfaz.Views
 
         private void Registrar(object sender, RoutedEventArgs e)
         {
-            RegistrarUsuarios();
+            string user = tbDoc.Text;
+            RegistrarUsuarios(user);
         }
 
         private void Modificar(object sender, RoutedEventArgs e)
@@ -68,18 +69,28 @@ namespace Interfaz.Views
             {
                 return true;
             }
+            
                 
          }
         
 
-        private void RegistrarUsuarios()
+        private void RegistrarUsuarios(string user)
         {
-            if (comprobarcampos())
+            var datos = CN_Usuario.UserExiste(user);
+            if (datos.NoDoc == null)
             {
-                asignado();
-                CN_Usuario.InsertarUsuario(E_Usuario);
-                Content = new Usuarios();
+                if (comprobarcampos())
+                {
+                    asignado();
+                    CN_Usuario.InsertarUsuario(E_Usuario);
+                    Content = new Usuarios();
+                }
             }
+            else
+            {
+                MessageBox.Show("Este Usuario ya esta registrado.");
+            }
+           
         }
 
         void asignado()
